@@ -19,4 +19,5 @@ con.connect(() => {
   con.query('SELECT name, surfaceArea FROM country ORDER BY surfaceArea DESC LIMIT 10');
   con.query('SELECT name, population FROM city ORDER BY population DESC LIMIT 10');
   con.query('SELECT SUM(population) FROM country'); 
+  console.log('MySQL connected...');
 });
