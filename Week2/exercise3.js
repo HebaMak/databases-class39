@@ -12,7 +12,10 @@ con.connect(() => {
   con.query('USE researches');
   
   con.query(`
-      SELECT author_name , mentor FROM authors;
+    SELECT t1.author_name AS Author, t2.author_name AS Mentor
+      FROM authors AS t1 
+      INNER JOIN authors AS t2
+      ON t1.mentor = t2.author_id;
   `);       
   
   con.query(`
