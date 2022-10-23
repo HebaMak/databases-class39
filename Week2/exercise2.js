@@ -25,6 +25,9 @@ con.connect(() => {
   //add column mentor to table authors 
   con.query(`ALTER TABLE authors ADD mentor INT`);
 
+  //add foreign key to mentor references to author_id  
+  con.query(`ALTER TABLE authors ADD FOREIGN KEY (mentor) REFERENCES authors(author_id) `);
+
   //create table research_Papers
   con.query(`CREATE TABLE research_Papers (
     paper_id INT PRIMARY KEY AUTO_INCREMENT, 
@@ -44,25 +47,24 @@ con.connect(() => {
 
   //insert 15 authors to author table 
   con.query(`INSERT authors(author_name, university, date_of_birth, h_index, gender, mentor)
-      VALUES('Heba', 'Amsterdam University', '1979-11-10', 4 , 'f', 5),
-            ('Lydia', 'Eindhoven University', '2002-03-13', 9 , 'f', 8),
-            ('Walaa', 'Rotterdam University', '1992-08-10', 7 , 'f', 6),
+      VALUES('Heba', 'Amsterdam University', '1969-11-10', 4 , 'f', 1),
+            ('Lydia', 'Eindhoven University', '2002-03-13', 9 , 'f', 2),
+            ('Walaa', 'Rotterdam University', '1992-08-10', 7 , 'f', 3),
             ('Hind', 'Utercht University', '1988-02-19', 8 , 'f', 1),
             ('Hany', 'Tilburg University', '2000-01-05', 4 , 'M', 5),
             ('Goerge', 'Groningen University', '1993-04-10', 7 , 'M', 1),
-            ('Gloria', 'Arnhem University', '1993-11-20', 15 , 'f', 8),
+            ('Gloria', 'Arnhem University', '1993-11-20', 15 , 'f', 5),
             ('Basma', 'Leiden University', '1975-12-25', 10 , 'f', 1),
             ('Amged', 'Haarlem University', '1985-09-06', 12 , 'M', 5),
-            ('Ahmed', 'Maastricht University', '1987-10-10', 5 , 'M', 10),
-            ('Joe', 'Apeldoorn University', '1990-12-05', 13 , 'M', 1),
-            ('Jane', 'Breda University', '1991-12-12', 2 , 'f', 9),
+            ('Ahmed', 'Maastricht University', '1987-10-10', 5 , 'M', 9),
+            ('Joe', 'Apeldoorn University', '1990-12-05', 13 , 'M', 8),
+            ('Jane', 'Breda University', '1991-12-12', 2 , 'f', 10),
             ('Michel', 'Zoetermer University', '1976-08-15', 3 , 'M', 9),
-            ('Mina', 'Dordrecht University', '1989-05-.2', 5 , 'M', 10),
+            ('Mina', 'Dordrecht University', '1989-05-.2', 5 , 'M', 8),
             ('Maya', 'Haag University', '1974-06-09', 10 , 'f', 1)
       `)
 
-  //add foreign key to mentor references to author_id  
-  con.query(`ALTER TABLE authors ADD FOREIGN KEY (mentor) REFERENCES authors(author_id) `);
+  
 
   //insert 30 research papers to  research_Papers table 
   con.query(`INSERT research_Papers(paper_title, conference, publish_date) 
