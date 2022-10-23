@@ -1,0 +1,44 @@
+1- in prep-ex file
+2- in each table id
+3- recipe_step, recipe_category , recipe_ingredient
+4- many to  many
+5-
+
+
+// All the vegetarian recipes with potatoes
+SELECT recipe.name
+  FROM recipe
+  JOIN recipe_category
+  ON recipe_category.recipe_id = recipe.id
+  JOIN category
+  ON category.id = recipe_category.category_id
+  JOIN recipe_ingredient
+  ON recipe_ingredient.recipe_id = recipe.id
+  JOIN ingredient
+  ON ingredient.id = recipe_ingredient.ingredient_id
+  WHERE ingredient.name ='potatoes' AND category.name = 'Vegetarian';
+
+
+// All the cakes that do not need baking (the recipe names category = cake & No-Bake)
+SELECT * FROM recipe
+  JOIN recipe_category
+  ON recipe.id = recipe_category.recipe_id
+  JOIN category
+  ON category.id = recipe_category.category_id
+  WHERE category.name IN ('No-Bake' ,  'Cake')
+  GROUP BY recipe.name
+  HAVING COUNT(*) = 2;
+  
+  
+
+// All the vegan and Japanese recipe
+SELECT * FROM recipe
+  JOIN recipe_category
+  ON recipe.id = recipe_category.recipe_id 
+  JOIN category
+  ON category.id = recipe_category.category_id 
+  WHERE category.name IN ('Vegetarian' , 'Japanese')
+  GROUP BY recipe.name
+  HAVING COUNT(*) = 2;
+
+
