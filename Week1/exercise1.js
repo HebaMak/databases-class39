@@ -10,23 +10,22 @@ const con = mysql.createConnection({
 
 
 con.connect(() => {
-  con.query("USE meetup");
   con.query(`DROP TABLE Invitee, Room, Meeting`);
   con.query(`CREATE TABLE Invitee (
     invitee_no INT PRIMARY KEY, 
-    invitee_name TEXT, 
-    invited_by TEXT
+    invitee_name VARCHAR(128), 
+    invited_by VARCHAR(128)
   )`);
 
   con.query(`CREATE TABLE Room (
     room_no INT PRIMARY KEY, 
-    room_name TEXT , 
+    room_name VARCHAR(128) , 
     floor_number INT
   )`);
 
   con.query(`CREATE TABLE Meeting (
     meeting_no INT PRIMARY KEY,
-    meeting_title TEXT, 
+    meeting_title VARCHAR(128), 
     starting_time DATETIME, 
     ending_time DATETIME,
     room_no INT, 
