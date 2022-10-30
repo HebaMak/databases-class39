@@ -27,9 +27,11 @@ async function createEpisodeExercise(client) {
     elements: ["CIRRUS", "CLOUDS", "CONIFER", "DECIDIOUS", "GRASS", "MOUNTAIN", "MOUNTAINS", "RIVER", "SNOWY_MOUNTAIN", "TREE", "TREES"]
   });
 
+  const insertedId = insertedEpi.insertedId
+
 
   console.log(
-    `Created season 9 episode 13 and the document got the id ${insertedEpi}`
+    `Created season 9 episode 13 and the document got the id ${insertedId}`
   );
 }
 
@@ -40,14 +42,14 @@ async function findEpisodesExercises(client) {
    */
 
   // Find the title of episode 2 in season 2 [Should be: WINTER SUN]
-  const foundTitle = await collection.findOne({episode: "S02E02"}, {title: 1} );
+  const foundTitle = await collection.findOne({episode: "S02E02"});
   const title = foundTitle.title
   console.log(
     `The title of episode 2 in season 2 is ${title}`
   );
 
   // Find the season and episode number of the episode called "BLACK RIVER" [Should be: S02E06]
-  const black_river = await collection.findOne({title: "BLACK RIVER"}, {episode: 1} );
+  const black_river = await collection.findOne({title: "BLACK RIVER"});
   const black_river_epi = black_river.episode
 
   console.log(
