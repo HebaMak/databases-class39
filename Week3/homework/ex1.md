@@ -3,7 +3,6 @@
 
 2- food_description  because of  non atomic values.
 
-3- dinner_date     because of data type and formate.
 
 
 ### What entities do you recognize that could be extracted?

@@ -10,7 +10,7 @@ const con = mysql.createConnection({
 
 con.connect(() => {
   try {
-    con.query(`SET AUTOCOMMIT = false`)
+  con.query(`SET AUTOCOMMIT = false`)
     con.query(`START TRANSACTION`)
     con.query(`
       UPDATE account 
