@@ -9,7 +9,6 @@ const con = mysql.createConnection({
 
 
 con.connect(() => {
-  con.query('USE researches');
   
   con.query(`
     SELECT t1.author_name AS Author, t2.author_name AS Mentor

@@ -9,8 +9,7 @@ const con = mysql.createConnection({
 
 
 con.connect(() => {
-  con.query('USE researches');
-
+  
   con.query(`
     SELECT research_papers.paper_title , COUNT(author_name)
       FROM authors
