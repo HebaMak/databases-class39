@@ -8,10 +8,10 @@ const con = mysql.createConnection({
 });
 
 con.connect(() => {
-  con.query('DROP TABLE IF EXISTS research_Papers, author_paper');
+  con.query('DROP TABLE IF EXISTS research_papers, author_paper');
 
-  //create table research_Papers
-  con.query(`CREATE TABLE research_Papers (
+  //create table research_papers
+  con.query(`CREATE TABLE research_papers (
     paper_id INT PRIMARY KEY AUTO_INCREMENT, 
     paper_title VARCHAR(128), 
     conference VARCHAR(128), 
@@ -24,7 +24,7 @@ con.connect(() => {
     author_id INT,
     paper_id INT,
     FOREIGN KEY (author_id) REFERENCES authors(author_id),
-    FOREIGN KEY (paper_id) REFERENCES research_Papers(paper_id)
+    FOREIGN KEY (paper_id) REFERENCES research_papers(paper_id)
   )`)
 
   //insert 15 authors to author table 
@@ -48,8 +48,8 @@ con.connect(() => {
 
   
 
-  //insert 30 research papers to  research_Papers table 
-  con.query(`INSERT research_Papers(paper_title, conference, publish_date) 
+  //insert 30 research papers to  research_papers table 
+  con.query(`INSERT research_papers(paper_title, conference, publish_date) 
       VALUES('Exploring the interplay between full-lifecycle learning design tooling and teacher professional development',
             'Information technology Research','2014-01-18'),
             ('The psychology of meaningful verbal learning','Information technology Research','2017-12-21'),
