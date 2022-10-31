@@ -8,7 +8,7 @@ const con = mysql.createConnection({
 });
 
 con.connect(() => {
-  con.query('DROP TABLE IF EXISTS research_Papers');
+  con.query('DROP TABLE IF EXISTS research_Papers, author_paper');
 
   //create table research_Papers
   con.query(`CREATE TABLE research_Papers (
