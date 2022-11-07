@@ -50,7 +50,7 @@ async function findEpisodesExercises(client) {
 
   // Find the season and episode number of the episode called "BLACK RIVER" [Should be: S02E06]
   const black_river = await collection.findOne({title: "BLACK RIVER"});
-
+    
   console.log(
     `The season and episode number of the "BLACK RIVER" episode is ${black_river.episode}`
   );
@@ -82,10 +82,9 @@ async function updateEpisodeExercises(client) {
 
   // Episode 13 in season 30 should be called BLUE RIDGE FALLS, yet it is called BLUE RIDGE FALLERS now. Fix that
   const  blue_ridge_falls = await collection.updateOne({episode: 'S30E13'},  {$set: {title: 'BLUE RIDGE FALLS'}})
-  const blue_ridge_falls_count = blue_ridge_falls.modifiedCount
 
   console.log(
-    `Ran a command to update episode 13 in season 30 and it updated ${blue_ridge_falls_count} episodes`
+    `Ran a command to update episode 13 in season 30 and it updated ${blue_ridge_falls.modifiedCount} episodes`
   );
 
   // Unfortunately we made a mistake in the arrays and the element type called 'BUSHES' should actually be 'BUSH' as sometimes only one bush was painted.
@@ -105,9 +104,9 @@ async function deleteEpisodeExercise(client) {
    * This is episode 14 in season 31. Please remove it and verify that it has been removed!
    */
   const deletedS31E14 = await collection.deleteOne({episode: 'S31E14'})
-  const deletedS31E14Count = deletedS31E14.deletedCount
+  
   console.log(
-    `Ran a command to delete episode and it deleted ${deletedS31E14Count} episodes`
+    `Ran a command to delete episode and it deleted ${deletedS31E14.deletedCount} episodes`
   );
 }
 

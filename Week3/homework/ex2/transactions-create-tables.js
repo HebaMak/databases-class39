@@ -19,7 +19,7 @@ con.connect(() => {
   con.query(`CREATE TABLE account_changes (
     change_number INT PRIMARY KEY AUTO_INCREMENT, 
     account_number INT,
-    amount DECIMAL,
+    amount DECIMAL(10,3),
     changed_date DATE,
     remark VARCHAR(128),
     FOREIGN KEY (account_number) REFERENCES account(account_number)

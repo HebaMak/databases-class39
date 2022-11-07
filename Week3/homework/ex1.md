@@ -3,7 +3,7 @@
 
 2- food_description  because of  non atomic values.
 
-3- dinner_date (it should be the same type and the same format)
+3- dinner_date it has more than one formate for the date data type. 
 
 
 
