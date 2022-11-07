@@ -1,0 +1,62 @@
+[
+  {
+    "account_number": "101",
+    "balance": 25000,
+    "account_changes": [
+      {
+        "change_number": 30,
+        "amount": 900,
+        "changed_date": "2022-10-01",
+        "remark": "salary"
+      }
+    ]
+  },
+  {
+    "account_number": "102",
+    "balance": 45000,
+    "account_changes": [
+      {
+        "change_number": 50,
+        "amount": 1500,
+        "changed_date": "2022-09-15",
+        "remark": "rent"
+      }
+    ]
+  },
+  {
+    "account_number": "103",
+    "balance": 55000,
+    "account_changes": [
+      {
+        "change_number": 70,
+        "amount": 500,
+        "changed_date": "2022-09-19",
+        "remark": "car installment"
+      }
+    ]
+  },
+  {
+    "account_number": "104",
+    "balance": 7000,
+    "account_changes": [
+      {
+        "change_number": 80,
+        "amount": 200,
+        "changed_date": "2022-09-10",
+        "remark": "insurance"
+      }
+    ]
+  },
+  {
+    "account_number": "105",
+    "balance": 9500,
+    "account_changes": [
+      {
+        "change_number": 100,
+        "amount": 700,
+        "changed_date": "2022-9-25",
+        "remark": "purchases"
+      }
+    ]
+  }
+]
