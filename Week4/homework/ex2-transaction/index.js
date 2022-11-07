@@ -8,7 +8,7 @@ const uri = process.env.MONGODB_URL;
 
 const client = new MongoClient(uri);
 
-const collection = client.db('bank').collection('accounts');
+const collection = client.db('databaseWeek4').collection('accounts');
 
 async function main() {
   try {

@@ -6,11 +6,11 @@ const uri = process.env.MONGODB_URL;
 
 const client = new MongoClient(uri);
 
-const collection = client.db('bank').collection('accounts');
+const collection = client.db('databaseWeek4').collection('accounts');
 
 const cleanUpAccounts = async () => {
   await collection.deleteMany({});
-  console.log('database Deleted');
+  console.log('accounts collections Deleted');
 };
 
 const createAccount = async (accountNumber, balance) => {

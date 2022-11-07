@@ -7,24 +7,24 @@ const uri = process.env.MONGODB_URL;
 
 const client = new MongoClient(uri);
 
-const collection = client.db('bank').collection('accounts');
+const collection = client.db('databaseWeek4').collection('accounts');
 
-const transfer = async (client, sendFrom, sendTo, amount, remark) => {
-  const changedNumberFrom = await changeNumber(sendFrom);
-  const changedNumberTo = await changeNumber(sendTo);
+const transfer = async (client, fromAccount, toAccount, amount, remark) => {
+  const changedNumberFrom = await changeNumber(fromAccount);
+  const changedNumberTo = await changeNumber(toAccount);
   const session = await client.startSession();
   try {
     await session.withTransaction(async () => {
       await collection.updateOne(
-        { account_number: sendFrom },
+        { account_number: fromAccount },
         {
           $inc: { balance: -amount },
           $addToSet: {
             account_changes: {
               change_number: changedNumberFrom,
-              amount: amount,
+              amount,
               changed_date: new Date(),
-              remark: remark,
+              remark,
             },
           },
         },
@@ -33,15 +33,15 @@ const transfer = async (client, sendFrom, sendTo, amount, remark) => {
       );
 
       await collection.updateOne(
-        { account_number: sendTo },
+        { account_number: toAccount },
         {
           $inc: { balance: +amount },
           $addToSet: {
             account_changes: {
               change_number: changedNumberTo,
-              amount: amount,
+              amount,
               changed_date: new Date(),
-              remark: remark,
+              remark,
             },
           },
         },
@@ -49,7 +49,7 @@ const transfer = async (client, sendFrom, sendTo, amount, remark) => {
         { session }
       );
     });
-    console.log(`${amount} transferred from ${sendFrom} to ${sendTo}`);
+    console.log(`${amount} transferred from ${fromAccount} to ${toAccount}`);
   } finally {
     await session.endSession();
   }
